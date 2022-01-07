@@ -83,6 +83,15 @@
 export default {
   name: 'TradeMark',
   data() {
+    // 输入品牌名称校验
+    const valueStyle = (rule, value, callback) => {
+      const reg = /^[a-zA-Z0-9_\u4e00-\u9fa5]+$/
+      if (!reg.test(value)) {
+        return callback(new Error('输入的字符类型不对'))
+      } else {
+        callback() // 切记要有返回函数
+      }
+    }
     return {
       // 对象身上的属性要与接口文档一致
       tradeMarkForm: {
@@ -107,9 +116,11 @@ export default {
       rules: {
         tmName: [
           { required: true, message: '品牌名称不能为空', trigger: 'blur' },
-          { min: 1, max: 10, message: '长度在 1 到 10 个字符', trigger: 'blur' }
+          { min: 1, max: 10, message: '长度在 1 到 10 个字符', trigger: 'blur' },
+          { validator: valueStyle, trigger: 'blur' }
         ]
       }
+
     }
   },
   mounted() {
