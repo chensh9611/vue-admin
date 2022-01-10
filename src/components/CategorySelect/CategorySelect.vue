@@ -2,18 +2,18 @@
   <div>
     <el-form :inline="true" :model="categoryFrom" class="demo-form-inline">
       <el-form-item label="一级分类">
-        <el-select v-model="categoryFrom.category1Id" placeholder="请选择" @change="getCategoryTwoList">
-          <el-option v-for="c1 in categoryOneList" :key="c1.id" :label="c1.name" :value="c1.id"></el-option>
+        <el-select v-model="categoryFrom.category1Id" placeholder="请选择" no-data-text="暂无数据" :disabled="!isShow" @change="getCategoryTwoList">
+          <el-option v-for="c1 in categoryOneList" :key="c1.id" :label="c1.name" :value="c1.id" no-data-text="暂无数据"></el-option>
         </el-select>
       </el-form-item>
       <el-form-item label="二级分类">
-        <el-select v-model="categoryFrom.category2Id" placeholder="请选择" @change="getCategoryThreeList">
-          <el-option v-for="c2 in categoryTwoList" :key="c2.id" :label="c2.name" :value="c2.id"></el-option>
+        <el-select v-model="categoryFrom.category2Id" placeholder="请选择" no-data-text="暂无数据" :disabled="!isShow" @change="getCategoryThreeList">
+          <el-option v-for="c2 in categoryTwoList" :key="c2.id" :label="c2.name" :value="c2.id" no-data-text="暂无数据"></el-option>
         </el-select>
       </el-form-item>
       <el-form-item label="二级分类">
-        <el-select v-model="categoryFrom.category3Id" placeholder="请选择" @change="handler">
-          <el-option v-for="c3 in categoryThreeList" :key="c3.id" :label="c3.name" :value="c3.id"></el-option>
+        <el-select v-model="categoryFrom.category3Id" placeholder="请选择" no-data-text="暂无数据" :disabled="!isShow" @change="handler">
+          <el-option v-for="c3 in categoryThreeList" :key="c3.id" :label="c3.name" :value="c3.id" no-data-text="暂无数据"></el-option>
         </el-select>
       </el-form-item>
     </el-form>
@@ -23,6 +23,7 @@
 <script>
 export default {
   name: 'CategorySelect',
+  props: ['isShow'],
   data() {
     return {
       // 一级分类数据
