@@ -16,16 +16,16 @@
             <el-table-column label="操作" width="width">
               <template slot-scope="{row, $index}">
                 <el-tooltip content="添加sku" placement="top">
-                  <el-button type="primary" icon="el-icon-plus" size="mini"></el-button>
+                  <el-button type="primary" icon="el-icon-plus" size="mini" />
                 </el-tooltip>
                 <el-tooltip content="修改spu" placement="top">
-                  <el-button type="warning" icon="el-icon-edit" size="mini"></el-button>
+                  <el-button type="warning" icon="el-icon-edit" size="mini" />
                 </el-tooltip>
                 <el-tooltip content="查看当前spu全部sku列表" placement="top">
-                  <el-button type="info" icon="el-icon-document" size="mini"></el-button>
+                  <el-button type="info" icon="el-icon-document" size="mini" />
                 </el-tooltip>
                 <el-tooltip content="删除spu" placement="top">
-                  <el-button type="danger" icon="el-icon-delete" size="mini"></el-button>
+                  <el-button type="danger" icon="el-icon-delete" size="mini" />
                 </el-tooltip>
               </template>
             </el-table-column>
