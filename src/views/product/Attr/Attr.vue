@@ -36,7 +36,7 @@
                 icon-color="red"
                 style="margin-left: 10px"
                 :title="`确定要删除属性名称【${row.attrName}】`"
-                @onConfirm="deleteAttrInfo(row)"
+                @confirm="deleteAttrInfo(row)"
               >
                 <el-button slot="reference" type="danger" icon="el-icon-delete" size="mini" />
               </el-popconfirm>
@@ -85,7 +85,7 @@
                 icon="el-icon-info"
                 icon-color="red"
                 :title="`确定要删除属性名称【${row.valueName}】`"
-                @onConfirm="deleteAttrName($index)"
+                @confirm="deleteAttrName($index)"
               >
                 <el-button slot="reference" type="danger" icon="el-icon-delete" size="mini" />
               </el-popconfirm>
