@@ -34,7 +34,8 @@
                 cancel-button-text="取消"
                 icon="el-icon-info"
                 icon-color="red"
-                :title="`确定要删除[${row.attrName}]`"
+                style="margin-left: 10px"
+                :title="`确定要删除属性名称【${row.attrName}】`"
                 @onConfirm="deleteAttrInfo(row)"
               >
                 <el-button slot="reference" type="danger" icon="el-icon-delete" size="mini" />
@@ -83,7 +84,7 @@
                 cancel-button-text="取消"
                 icon="el-icon-info"
                 icon-color="red"
-                :title="`确定要删除[${row.valueName}]`"
+                :title="`确定要删除属性名称【${row.valueName}】`"
                 @onConfirm="deleteAttrName($index)"
               >
                 <el-button slot="reference" type="danger" icon="el-icon-delete" size="mini" />
