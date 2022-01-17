@@ -2,6 +2,7 @@
   <div class="dashboard-container">
     <Card />
     <Sale />
+    <Observe />
   </div>
 </template>
 
@@ -9,9 +10,10 @@
 
 import Card from '@/views/dashboard/card/Card.vue'
 import Sale from '@/views/dashboard/sale/Sale.vue'
+import Observe from '@/views/dashboard/observe/Observe.vue'
 export default {
   name: 'Dashboard',
-  components: {Sale, Card }
+  components: { Observe, Sale, Card }
 }
 </script>
 
