@@ -1,15 +1,17 @@
 <template>
   <div class="dashboard-container">
-    <Card/>
+    <Card />
+    <Sale />
   </div>
 </template>
 
 <script>
 
 import Card from '@/views/dashboard/card/Card.vue'
+import Sale from '@/views/dashboard/sale/Sale.vue'
 export default {
   name: 'Dashboard',
-  components: { Card }
+  components: {Sale, Card }
 }
 </script>
 

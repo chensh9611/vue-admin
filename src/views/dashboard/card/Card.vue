@@ -86,12 +86,6 @@
                       <use xlink:href="#icon-up" />
                     </svg>
                   </span>
-                  日同比12%
-                  <span class="day">
-                    <svg class="icon">
-                      <use xlink:href="#icon-down" />
-                    </svg>
-                  </span>
                 </span>
               </div>
             </template>
