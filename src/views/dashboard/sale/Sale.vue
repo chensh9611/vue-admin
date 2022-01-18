@@ -3,8 +3,8 @@
     <el-card class="box-card">
       <header class="clearfix">
         <el-tabs v-model="activeName" class="tab">
-          <el-tab-pane label="销售额" name="sale"></el-tab-pane>
-          <el-tab-pane label="访问量" name="access"></el-tab-pane>
+          <el-tab-pane label="销售额" name="sale" />
+          <el-tab-pane label="访问量" name="access" />
         </el-tabs>
         <div class="sale-time">
           <span @click="setDay">今日</span>
@@ -25,65 +25,34 @@
       <main class="main">
         <el-row>
           <el-col :span="18">
-            <div ref="charts" class="charts"></div>
+            <div ref="charts" class="charts" />
           </el-col>
           <el-col :span="6">
             <div class="ranking">
               <h3>{{ `门店${titleName}排名` }}</h3>
-              <ul class="ranking-list">
-                <li class="ranking-list-item">
+              <ul v-show="titleName === '销售额'" class="ranking-list">
+                <li v-for="(sale,index) in saleValueAndName" :key="index" class="ranking-list-item">
                   <div class="index">
-                    <span>1</span>
+                    <span>{{ index+1 }}</span>
                   </div>
                   <div class="name">
-                    <span>耐克官方旗舰店</span>
+                    <span>{{ sale.saleName }}</span>
                   </div>
                   <div class="money">
-                    <span>￥100012</span>
+                    <span>{{ `￥${sale.saleValue}` }}</span>
                   </div>
                 </li>
-                <li class="ranking-list-item">
+              </ul>
+              <ul v-show="titleName === '访问量'" class="ranking-list">
+                <li v-for="(access,index) in accessValueAndName" :key="index" class="ranking-list-item">
                   <div class="index">
-                    <span>2</span>
+                    <span>{{ index+1 }}</span>
                   </div>
                   <div class="name">
-                    <span>阿迪达斯</span>
+                    <span>{{ access.accessName }}</span>
                   </div>
                   <div class="money">
-                    <span>￥98899</span>
-                  </div>
-                </li>
-                <li class="ranking-list-item">
-                  <div class="index">
-                    <span>3</span>
-                  </div>
-                  <div class="name">
-                    <span>海底捞</span>
-                  </div>
-                  <div class="money">
-                    <span>￥89999</span>
-                  </div>
-                </li>
-                <li class="ranking-list-item">
-                  <div class="index">
-                    <span>4</span>
-                  </div>
-                  <div class="name">
-                    <span>三只松鼠</span>
-                  </div>
-                  <div class="money">
-                    <span>￥79999</span>
-                  </div>
-                </li>
-                <li class="ranking-list-item">
-                  <div class="index">
-                    <span>5</span>
-                  </div>
-                  <div class="name">
-                    <span>肯德基</span>
-                  </div>
-                  <div class="money">
-                    <span>￥69999</span>
+                    <span>{{ access.accessValue }}</span>
                   </div>
                 </li>
               </ul>
@@ -104,7 +73,56 @@ export default {
     return {
       activeName: 'sale',
       myCharts: null,
-      date: []
+      date: [],
+      dateValue: 'year',
+      saleData: [300000, 288888, 198888, 98888, 78988, 188888, 103211, 122222, 88888, 98812, 300000, 283121],
+      access: [13000, 18888, 9888, 18888, 9988, 8888, 10321, 2222, 9111, 8812, 30000, 13121],
+      year: ['一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月'],
+      saleValueAndName: [
+        {
+          saleValue: '1100012',
+          saleName: '耐克官方店'
+        },
+        {
+          saleValue: '198899',
+          saleName: '阿迪达斯'
+        },
+        {
+          saleValue: '189999',
+          saleName: '海底捞'
+        },
+        {
+          saleValue: '179999',
+          saleName: '三只松鼠'
+        },
+        {
+          saleValue: '169999',
+          saleName: '肯德基'
+        }
+
+      ],
+      accessValueAndName: [
+        {
+          accessValue: '9120012',
+          accessName: '阿迪达斯'
+        },
+        {
+          accessValue: '8276543',
+          accessName: '兰蔻官方店'
+        },
+        {
+          accessValue: '7276543',
+          accessName: '古驰官方店'
+        },
+        {
+          accessValue: '6216543',
+          accessName: '特斯拉官方店'
+        },
+        {
+          accessValue: '5669999',
+          accessName: '耐克'
+        }
+      ]
     }
   },
   computed: {
@@ -117,11 +135,209 @@ export default {
       this.myCharts.setOption({
         title: {
           text: this.titleName + '趋势'
+        },
+        series: [
+          {
+            data: this.titleName === '销售额' ? this.saleData : this.access,
+            type: 'bar'
+          }
+        ],
+        xAxis: {
+          data: this.year
         }
       })
+    },
+    date: function() {
+      console.log(this.dateValue)
+      if (this.dateValue === 'month') {
+        this.accessValueAndName = [
+          {
+            accessValue: '1120012',
+            accessName: '特斯拉旗舰店'
+          },
+          {
+            accessValue: '1276543',
+            accessName: '兰蔻官方店'
+          },
+          {
+            accessValue: '1276543',
+            accessName: '古驰官方店'
+          },
+          {
+            accessValue: '1216543',
+            accessName: '华为'
+          },
+          {
+            accessValue: '1669999',
+            accessName: '耐克'
+          }
+        ]
+        this.saleValueAndName = [
+          {
+            saleValue: '190012',
+            saleName: '华为旗舰店'
+          },
+          {
+            saleValue: '188899',
+            saleName: '耐克'
+          },
+          {
+            saleValue: '179999',
+            saleName: '海底捞'
+          },
+          {
+            saleValue: '169999',
+            saleName: '阿迪达斯'
+          },
+          {
+            saleValue: '159999',
+            saleName: '肯德基'
+          }
+        ]
+      } else if (this.dateValue === 'year') {
+        this.accessValueAndName = [
+          {
+            accessValue: '9120012',
+            accessName: '阿迪达斯'
+          },
+          {
+            accessValue: '8276543',
+            accessName: '兰蔻官方店'
+          },
+          {
+            accessValue: '7276543',
+            accessName: '古驰官方店'
+          },
+          {
+            accessValue: '6216543',
+            accessName: '特斯拉官方店'
+          },
+          {
+            accessValue: '5669999',
+            accessName: '耐克'
+          }
+        ]
+        this.saleValueAndName = [
+          {
+            saleValue: '1100012',
+            saleName: '耐克官方店'
+          },
+          {
+            saleValue: '198899',
+            saleName: '阿迪达斯'
+          },
+          {
+            saleValue: '189999',
+            saleName: '海底捞'
+          },
+          {
+            saleValue: '179999',
+            saleName: '三只松鼠'
+          },
+          {
+            saleValue: '169999',
+            saleName: '肯德基'
+          }
+        ]
+      } else if (this.dateValue === 'week') {
+        this.accessValueAndName = [
+          {
+            accessValue: '80012',
+            accessName: '阿迪达斯'
+          },
+          {
+            accessValue: '76543',
+            accessName: '兰蔻官方店'
+          },
+          {
+            accessValue: '76543',
+            accessName: '古驰官方店'
+          },
+          {
+            accessValue: '66543',
+            accessName: '特斯拉官方店'
+          },
+          {
+            accessValue: '59999',
+            accessName: '耐克'
+          }
+        ]
+        this.saleValueAndName = [
+          {
+            saleValue: '90012',
+            saleName: '耐克官方店'
+          },
+          {
+            saleValue: '88899',
+            saleName: '阿迪达斯'
+          },
+          {
+            saleValue: '79999',
+            saleName: '海底捞'
+          },
+          {
+            saleValue: '69999',
+            saleName: '三只松鼠'
+          },
+          {
+            saleValue: '59999',
+            saleName: '肯德基'
+          }
+        ]
+      } else if (this.dateValue === 'day') {
+        this.accessValueAndName = [
+          {
+            accessValue: '20012',
+            accessName: '耐克'
+          },
+          {
+            accessValue: '16543',
+            accessName: '兰蔻官方店'
+          },
+          {
+            accessValue: '14543',
+            accessName: '三星官方店'
+          },
+          {
+            accessValue: '11543',
+            accessName: '特斯拉官方店'
+          },
+          {
+            accessValue: '9999',
+            accessName: '海底捞'
+          }
+        ]
+        this.saleValueAndName = [
+          {
+            saleValue: '9012',
+            saleName: '肯德基'
+          },
+          {
+            saleValue: '8899',
+            saleName: '阿迪达斯'
+          },
+          {
+            saleValue: '7999',
+            saleName: '耐克官方店'
+          },
+          {
+            saleValue: '6999',
+            saleName: '三只松鼠'
+          },
+          {
+            saleValue: '5999',
+            saleName: '华为'
+          }
+        ]
+      }
     }
   },
   mounted() {
+    // 初始化门店销售排名事件区间
+    const start = dayjs().startOf('year').format('YYYY-MM-DD')
+    const end = dayjs().endOf('year').format('YYYY-MM-DD')
+    this.date = [start, end]
+    // 初始化图表
     this.myCharts = echarts.init(this.$refs.charts)
     this.myCharts.setOption({
       title: {
@@ -129,14 +345,17 @@ export default {
       },
       xAxis: {
         type: 'category',
-        data: ['一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月']
+        data: ['一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月'],
+        axisTick: {
+          alignWithLabel: true
+        }
       },
       yAxis: {
         type: 'value'
       },
       series: [
         {
-          data: [120, 200, 150, 80, 70, 110, 130, 500, 145, 888, 1245, 1112],
+          data: [300000, 288888, 198888, 98888, 78988, 188888, 103211, 122222, 88888, 98812, 300000, 283121],
           type: 'bar'
         }
       ],
@@ -158,21 +377,25 @@ export default {
     setDay() {
       const day = dayjs().format('YYYY-MM-DD')
       this.date = [day, day]
+      this.dateValue = 'day'
     },
     setWeek() {
       const start = dayjs().day(1).format('YYYY-MM-DD')
       const end = dayjs().day(7).format('YYYY-MM-DD')
       this.date = [start, end]
+      this.dateValue = 'week'
     },
     setMonth() {
       const start = dayjs().startOf('month').format('YYYY-MM-DD')
       const end = dayjs().endOf('month').format('YYYY-MM-DD')
       this.date = [start, end]
+      this.dateValue = 'month'
     },
     setYear() {
       const start = dayjs().startOf('year').format('YYYY-MM-DD')
       const end = dayjs().endOf('year').format('YYYY-MM-DD')
       this.date = [start, end]
+      this.dateValue = 'year'
     }
   }
 }

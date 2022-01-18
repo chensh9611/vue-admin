@@ -36,6 +36,7 @@ module.exports = {
       warnings: false,
       errors: true
     },
+
     // 配置代理跨域proxy
     proxy: {
       '/dev-api': {

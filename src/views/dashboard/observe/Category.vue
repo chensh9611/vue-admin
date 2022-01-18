@@ -12,7 +12,7 @@
         </div>
       </header>
       <main>
-        <PieCharts />
+        <PieCharts :value="radioValue" />
       </main>
     </el-card>
   </div>
