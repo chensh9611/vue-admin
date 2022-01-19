@@ -148,7 +148,6 @@ export default {
       })
     },
     date: function() {
-      console.log(this.dateValue)
       if (this.dateValue === 'month') {
         this.accessValueAndName = [
           {

@@ -85,6 +85,32 @@ export const constantRoutes = [
       }
     ]
   },
+  {
+    path: '/permission/user',
+    component: Layout,
+    name: 'Permission',
+    meta: { title: '权限管理', icon: 'el-icon-lock' },
+    children: [
+      {
+        path: 'user',
+        name: 'User',
+        component: () => import('../views/permission/user/User.vue'),
+        meta: { title: '用户管理' }
+      },
+      {
+        path: 'role',
+        name: 'Role',
+        component: () => import('../views/permission/role/Role.vue'),
+        meta: { title: '角色管理' }
+      },
+      {
+        path: 'menu',
+        name: 'Menu',
+        component: () => import('../views/permission/menu/Menu.vue'),
+        meta: { title: '菜单管理' }
+      }
+    ]
+  },
   // 404 page must be placed at the end !!!
   { path: '*', redirect: '/404', hidden: true }
 ]

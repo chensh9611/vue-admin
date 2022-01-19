@@ -28,18 +28,22 @@
           </el-table-column>
           <el-table-column label="操作" width="150" prop="prop">
             <template slot-scope="{row}">
-              <el-button type="primary" icon="el-icon-edit" size="mini" @click="updateAttrInfo(row)" />
-              <el-popconfirm
-                confirm-button-text="确定"
-                cancel-button-text="取消"
-                icon="el-icon-info"
-                icon-color="red"
-                style="margin-left: 10px"
-                :title="`确定要删除属性名称【${row.attrName}】`"
-                @confirm="deleteAttrInfo(row)"
-              >
-                <el-button slot="reference" type="danger" icon="el-icon-delete" size="mini" />
-              </el-popconfirm>
+              <el-tooltip class="item" effect="dark" content="修改属性" placement="top">
+                <el-button type="primary" icon="el-icon-edit" size="mini" @click="updateAttrInfo(row)" />
+              </el-tooltip>
+              <el-tooltip class="item" effect="dark" content="删除属性" placement="top">
+                <el-popconfirm
+                  confirm-button-text="确定"
+                  cancel-button-text="取消"
+                  icon="el-icon-info"
+                  icon-color="red"
+                  style="margin-left: 10px"
+                  :title="`确定要删除属性名称【${row.attrName}】`"
+                  @confirm="deleteAttrInfo(row)"
+                >
+                  <el-button slot="reference" type="danger" icon="el-icon-delete" size="mini" />
+                </el-popconfirm>
+              </el-tooltip>
             </template>
           </el-table-column>
         </el-table>
@@ -79,16 +83,18 @@
           </el-table-column>
           <el-table-column label="操作" width="width">
             <template slot-scope="{row,$index}">
-              <el-popconfirm
-                confirm-button-text="确定"
-                cancel-button-text="取消"
-                icon="el-icon-info"
-                icon-color="red"
-                :title="`确定要删除属性名称【${row.valueName}】`"
-                @confirm="deleteAttrName($index)"
-              >
-                <el-button slot="reference" type="danger" icon="el-icon-delete" size="mini" />
-              </el-popconfirm>
+              <el-tooltip class="item" effect="dark" content="删除属性值" placement="top">
+                <el-popconfirm
+                  confirm-button-text="确定"
+                  cancel-button-text="取消"
+                  icon="el-icon-info"
+                  icon-color="red"
+                  :title="`确定要删除属性名称【${row.valueName}】`"
+                  @confirm="deleteAttrName($index)"
+                >
+                  <el-button slot="reference" type="danger" icon="el-icon-delete" size="mini" />
+                </el-popconfirm>
+              </el-tooltip>
             </template>
           </el-table-column>
         </el-table>

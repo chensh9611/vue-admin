@@ -116,7 +116,6 @@ export default {
   },
   methods: {
     handleCommand(command) {
-      console.log('csh' + command)
       this.sumValue.value = command.userSum
       this.sumValue.percentage = command.percentage
       this.sumValue.type = command.type

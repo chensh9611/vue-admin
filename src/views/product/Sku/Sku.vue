@@ -14,22 +14,30 @@
           <el-table-column label="重量(kg)" prop="weight" align="center" />
           <el-table-column label="价格(元)" prop="price" align="center" />
           <el-table-column label="操作" width="260" align="center">
-            <template slot-scope="{row, $index}">
-              <el-button v-if="row.isSale === 0" type="success" size="mini" icon="el-icon-top" @click="onSale(row)" />
-              <el-button v-else type="info" size="mini" icon="el-icon-bottom" @click="cancelSale(row)" />
-              <el-button type="primary" size="mini" icon="el-icon-edit" @click="$message.info('此功能正在开发中')" />
-              <el-button type="info" size="mini" icon="el-icon-document" @click="getSkuDetails(row)" />
-              <el-popconfirm
-                confirm-button-text="确定"
-                cancel-button-text="取消"
-                icon="el-icon-info"
-                icon-color="red"
-                style="padding-left: 10px"
-                :title="`确定要删除${row.skuName}吗？`"
-                @confirm="deleteSku(row)"
-              >
-                <el-button slot="reference" type="danger" size="mini" icon="el-icon-delete" />
-              </el-popconfirm>
+            <template slot-scope="{row}">
+              <el-tooltip class="item" effect="dark" :content="row.isSale === 0 ?'上架' : '下架'" placement="top">
+                <el-button v-if="row.isSale === 0" type="success" size="mini" icon="el-icon-top" @click="onSale(row)" />
+                <el-button v-else type="info" size="mini" icon="el-icon-bottom" @click="cancelSale(row)" />
+              </el-tooltip>
+              <el-tooltip class="item" effect="dark" content="修改SKU" placement="top">
+                <el-button type="primary" size="mini" icon="el-icon-edit" @click="$message.info('此功能正在开发中')" />
+              </el-tooltip>
+              <el-tooltip class="item" effect="dark" content="SKU详情" placement="top">
+                <el-button type="info" size="mini" icon="el-icon-document" @click="getSkuDetails(row)" />
+              </el-tooltip>
+              <el-tooltip class="item" effect="dark" content="删除SKU" placement="top">
+                <el-popconfirm
+                  confirm-button-text="确定"
+                  cancel-button-text="取消"
+                  icon="el-icon-info"
+                  icon-color="red"
+                  style="padding-left: 10px"
+                  :title="`确定要删除${row.skuName}吗？`"
+                  @confirm="deleteSku(row)"
+                >
+                  <el-button slot="reference" type="danger" size="mini" icon="el-icon-delete" />
+                </el-popconfirm>
+              </el-tooltip>
             </template>
           </el-table-column>
         </el-table>
