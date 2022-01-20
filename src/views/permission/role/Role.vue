@@ -60,7 +60,7 @@
             >
               <template slot-scope="{row}">
                 <el-tooltip class="item" effect="dark" content="分配权限" placement="top">
-                  <el-button type="info" icon="el-icon-user" size="mini" />
+                  <el-button type="info" icon="el-icon-user" size="mini" @click="toRoleAuth(row)" />
                 </el-tooltip>
                 <el-tooltip class="item" effect="dark" content="Top Center 修改角色" placement="top">
                   <el-button type="primary" icon="el-icon-edit" size="mini" @click="updateRole(row)" />
@@ -123,6 +123,9 @@ export default {
     this.getRoleList()
   },
   methods: {
+    toRoleAuth(row) {
+      this.$router.push(`/permission/RoleAuth/${row.id}?roleName=${row.roleName}`)
+    },
     // 删除某个角色
     async deleteRoleInfo(row) {
       console.log(row)

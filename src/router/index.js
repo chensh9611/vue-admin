@@ -86,9 +86,10 @@ export const constantRoutes = [
     ]
   },
   {
-    path: '/permission/user',
+    path: '/permission',
     component: Layout,
     name: 'Permission',
+    redirect: '/permission/user',
     meta: { title: '权限管理', icon: 'el-icon-lock' },
     children: [
       {
@@ -108,6 +109,13 @@ export const constantRoutes = [
         name: 'Menu',
         component: () => import('../views/permission/menu/Menu.vue'),
         meta: { title: '菜单管理' }
+      },
+      {
+        path: 'roleAuth/:id',
+        name: 'RoleAuth',
+        component: () => import('../views/permission/role/RoleAuth.vue'),
+        meta: { activeMenu: '/permission/role', title: '角色授权' }
+        // hidden: true
       }
     ]
   },
