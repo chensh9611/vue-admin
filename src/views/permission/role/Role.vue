@@ -124,7 +124,7 @@ export default {
   },
   methods: {
     toRoleAuth(row) {
-      this.$router.push(`/permission/RoleAuth/${row.id}?roleName=${row.roleName}`)
+      this.$router.push(`/acl/RoleAuth/${row.id}?roleName=${row.roleName}`)
     },
     // 删除某个角色
     async deleteRoleInfo(row) {

@@ -91,7 +91,7 @@ export default {
         // 必须在跳转前获取(跳转后通过this获取不到正确的数据了)
         const roleName = this.$route.query.roleName
         const roles = this.$store.getters.roles
-        this.$router.replace('/permission/role', () => {
+        this.$router.replace('/acl/role', () => {
           // 跳转成功后, 判断如果更新的是当前用户对应角色的权限, 重新加载页面以获得最新的数据
           if (roles === roleName) {
             window.location.reload()
