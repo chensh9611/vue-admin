@@ -39,7 +39,7 @@
         <el-select :placeholder="`还有${unSelectSaleAttr.length}个属性可以选择`" v-model="attrIdAndName">
           <el-option :label="attr.name" :value="`${attr.id}:${attr.name}`" v-for="attr in unSelectSaleAttr" :key="attr.id" />
         </el-select>
-        <el-button type="primary" icon="el-icon-plus" style="margin-left: 12px" :disabled="!attrIdAndName" @click="addAttrName">添加销售属性</el-button>
+        <el-button type="primary" size="small" icon="el-icon-plus" style="margin-left: 12px" :disabled="!attrIdAndName" @click="addAttrName">添加销售属性</el-button>
         <div>
           <el-table border style="width: 100%; margin-top: 4px" :data="spuInfo.spuSaleAttrList">
             <el-table-column label="序号" width="80" type="index" />
@@ -76,8 +76,8 @@
         </div>
       </el-form-item>
       <el-form-item>
-        <el-button type="primary" @click="addOrUpdateSpu">保存</el-button>
-        <el-button @click="cancel">取消</el-button>
+        <el-button type="primary" size="small" @click="addOrUpdateSpu">保存</el-button>
+        <el-button size="small" @click="cancel">取消</el-button>
       </el-form-item>
     </el-form>
   </div>

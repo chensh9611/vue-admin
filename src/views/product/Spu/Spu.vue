@@ -7,10 +7,10 @@
       <main>
         <el-card class="main">
           <div class="addSpu">
-            <el-button type="primary" icon="el-icon-plus" :disabled="!category3Id" @click="addSpu">添加SPU</el-button>
+            <el-button type="primary" size="small" icon="el-icon-plus" :disabled="!category3Id" @click="addSpu">添加SPU</el-button>
           </div>
           <div class="spu-list">
-            <el-table border style="width: 100%" :data="records">
+            <el-table border style="width: 100%" :data="records" :header-cell-style="{background:'#eef1f6',color:'#606266'}">
               <el-table-column label="序号" width="80" type="index" />
               <el-table-column label="spu名称" width="width" prop="spuName" />
               <el-table-column label="spu描述" width="width" prop="description" />

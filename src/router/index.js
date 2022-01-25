@@ -33,6 +33,7 @@ export const constantRoutes = [
 ]
 // 异步路由：不同的用户（角色），需要过滤筛选出来的路由
 export const asyncRoutes = [
+
   {
     path: '/product',
     component: Layout,
@@ -43,7 +44,7 @@ export const asyncRoutes = [
       {
         path: 'trademark',
         name: 'Trademark',
-        component: () => import('../views/product/tradeMark/TradeMark.vue'),
+        component: () => import('@/views/product/tradeMark/TradeMark.vue'),
         meta: { title: '品牌' }
       },
       {

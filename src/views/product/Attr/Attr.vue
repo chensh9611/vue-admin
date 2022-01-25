@@ -7,12 +7,13 @@
       <div v-show="attrVisible" class="attr-list">
         <el-button
           type="primary"
+          size="small"
           icon="el-icon-plus"
           style="margin-bottom: 20px"
           :disabled="!category3Id"
           @click="addAttrInfo"
         >添加属性</el-button>
-        <el-table border style="width: 100%;" :data="attrList">
+        <el-table border style="width: 100%;" :data="attrList" :header-cell-style="{background:'#eef1f6',color:'#606266'}">
           <el-table-column label="序号" width="80" prop="prop" type="index" align="center" />
           <el-table-column label="属性名称" width="150" prop="attrName" />
           <el-table-column label="属性值列表" width="width" prop="prop">
@@ -57,13 +58,14 @@
         <div style="margin-bottom: 20px">
           <el-button
             type="primary"
+            size="small"
             icon="el-icon-plus"
             :disabled="attrInfo.attrName === '' "
             @click="addAttrValue"
           >添加属性值</el-button>
-          <el-button @click="attrVisible=true">取消</el-button>
+          <el-button size="small" @click="attrVisible=true">取消</el-button>
         </div>
-        <el-table border style="width: 100%;" :data="attrInfo.attrValueList">
+        <el-table border style="width: 100%;" :data="attrInfo.attrValueList" >
           <el-table-column type="index" label="序号" width="80" align="center" />
           <el-table-column label="属性值名称" width="width">
             <template slot-scope="{row,$index}">
@@ -101,10 +103,11 @@
         <div style="margin-top: 20px">
           <el-button
             type="primary"
+            size="small"
             :disabled="attrInfo.attrValueList.length<1"
             @click="addOrUpdateAttrInfo"
           >保存</el-button>
-          <el-button @click="attrVisible=true">取消</el-button>
+          <el-button size="small" @click="attrVisible=true">取消</el-button>
         </div>
 
       </div>

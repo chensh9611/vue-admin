@@ -1,9 +1,9 @@
 <template>
   <div class="tradeMark-container">
     <!--   添加按钮 -->
-    <el-button type="primary" icon="el-icon-plus" style="margin: 10px 0" @click="visibleDialog">添加</el-button>
+    <el-button type="primary" icon="el-icon-plus" size="small " style="margin: 10px 0" @click="visibleDialog">添加</el-button>
     <!--  表格组件展示将来需要展示的数据  -->
-    <el-table style="width: 100%;" border :data="tradeMarkList">
+    <el-table style="width: 100%;" border :data="tradeMarkList" :header-cell-style="{background:'#eef1f6',color:'#606266'}">
       <!--column属性：
             1.label：显示标题
             2.width：对应列的宽度
@@ -72,8 +72,8 @@
         </el-form-item>
       </el-form>
       <div slot="footer" class="dialog-footer">
-        <el-button @click="dialogFormVisible = false">取 消</el-button>
-        <el-button type="primary" @click="addOrUpdateTradeMark">确 定</el-button>
+        <el-button size="small" @click="dialogFormVisible = false">取 消</el-button>
+        <el-button type="primary" size="small" @click="addOrUpdateTradeMark">确 定</el-button>
       </div>
     </el-dialog>
   </div>

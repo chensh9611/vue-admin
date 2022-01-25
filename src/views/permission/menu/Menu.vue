@@ -33,6 +33,7 @@
       style="margin-bottom: 20px;"
       :data="menuPermissionList"
       :expand-row-keys="expandKeys"
+      :header-cell-style="{background:'#eef1f6',color:'#606266'}"
       row-key="id"
     >
       <el-table-column

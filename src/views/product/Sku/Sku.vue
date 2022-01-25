@@ -2,7 +2,7 @@
   <div>
     <div class="sku-container">
       <el-card>
-        <el-table border style="width: 100%" :data="records">
+        <el-table border style="width: 100%" :data="records" :header-cell-style="{background:'#eef1f6',color:'#606266'}">
           <el-table-column label="序号" width="80" type="index" align="center" />
           <el-table-column label="名称" prop="skuName" align="center" />
           <el-table-column label="描述" prop="skuDesc" align="center" />
